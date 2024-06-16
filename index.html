@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Notícias do IBGE</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Portal de Notícias do IBGE</h1>
+        <div class="actions-container">
+            <div class="form-container">
+                <form id="search-form" class="search-form" onsubmit="applyFilters(event)">
+                    <!-- (0.1) Crie um formulário (<form>) para o campo de busca, no header. -->
+                    <input type="text" id="search-input" placeholder="Bucar notícia">
+                    <button type="submit">🔍</button>
+                    <!-- (0.1) Adicione um botão dentro do input de busca, para ser o submit. Utilize o ícone 🔍. Adicionar cursor pointer. -->
+                </form>
+            </div>
+            <div class="filter-container" onclick="openFilterDialog()">
+                <!-- (0.1) O ícone deve ser clicável e abrir um modal (<dialog>) com os filtros. Adicionar cursor pointer. -->
+                <svg class="filter-svg" width="20" height="20" fill="#f0f0f0" viewBox="0 0 80 90" focusable="false"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="m 0,0 30,45 0,30 10,15 0,-45 30,-45 Z"></path>
+                </svg> <!-- (0.1) Utilize a tag <svg> com o código SVG fornecido para criar o ícone de filtro. -->
+                <span id="filter-count" class="filter-count">0</span>
+            </div>
+        </div>
+    </header>
+    <dialog class="dialog-container"> <!-- (0.5) Utilize a tag <dialog> do HTML para criar o modal de filtros. -->
+        <form id="dialog-form" class="dialog-form" onsubmit=applyFilters(event)>
+            <!-- (0.25) Os filtros deverão ficar em um form. -->
+            <button class="dialog-close" onclick="closeFilterDialog()">❌</button>
+            <!-- (0.25) Adiciona um ícone de "X" no canto superior direito do modal para fechá-lo. -->
+            <div class="tipo-container">
+                <!-- (0.25) Inclua os campos de filtro "Tipo", "Quantidade", "De" e "Até" dentro do dialog. -->
+                <label for="tipo">Tipo:</label>
+                <select name="tipo" id="tipo">
+                    <!-- (0.25) Utilize a documentação https://servicodados.ibge.gov.br/api/docs/noticias?versao=3, atualize o input de "Tipo" para os valores possíveis. -->
+                    <option value="">Selecione</option>
+                    <option value="noticias">Notícias</option>
+                    <option value="releases">Releases</option>
+                </select>
+            </div>
+            <div class="quantidade-container">
+                <!-- (0.25) Inclua os campos de filtro "Tipo", "Quantidade", "De" e "Até" dentro do dialog. -->
+                <label for="quantidade">Quantidade:</label>
+                <select name="qtd" id="quantidade">
+                    <option value="5">5</option>
+                    <option selected value="10">10</option>
+                    <!-- (0.25) Inicie sempre a quantidade com 10, e as options sendo múltiplos de 5. -->
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+            <div class="de-container">
+                <!-- (0.25) Inclua os campos de filtro "Tipo", "Quantidade", "De" e "Até" dentro do dialog. -->
+                <label for="de">De:</label>
+                <input type="date" id="de" name="de">
+            </div>
+            <div class="ate-container">
+                <!-- (0.25) Inclua os campos de filtro "Tipo", "Quantidade", "De" e "Até" dentro do dialog. -->
+                <label for="ate">Até:</label>
+                <input type="date" id="ate" name="ate">
+            </div>
+            <button class="dialog-submit" type=submit>Aplicar</button>
+            <!-- (0.25) Adicione um botão "Aplicar" para aplicar os filtros e fechar o modal. -->
+        </form>
+    </dialog>
+    <main>
+        <div class="news-container">
+            <ul class="news-content"></ul> <!-- (0.1) Liste esses elementos dentro de uma <ul>. -->
+            <ul class="news-pages"></ul>
+            <!-- (0.1) Crie botões de paginação no final das notícias utilizando elementos <button> dentro de <ul> <li>. -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; Prova do segundo bimestre - Programação WEB</p>
+    </footer>
+    <script src="index.js"></script>
+</body>
+
+</html>
