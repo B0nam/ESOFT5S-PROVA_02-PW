@@ -71,7 +71,7 @@ function updateFilterCounter() {
 
 function getNoticias() {
     const urlParams = new URLSearchParams(window.location.search); // (1) A api deve ser chamada com os filtros da query string, filtrados pelo usuário.
-    const apiUrl = 'http://servicodados.ibge.gov.br/api/v3/noticias'; // (0.15) Utilize a API http://servicodados.ibge.gov.br/api/v3/noticias para buscar as notícias.
+    const apiUrl = 'https://servicodados.ibge.gov.br/api/v3/noticias'; // (0.15) Utilize a API http://servicodados.ibge.gov.br/api/v3/noticias para buscar as notícias.
 
     fetch(`${apiUrl}?${urlParams.toString()}`)
         .then(response => response.json())
